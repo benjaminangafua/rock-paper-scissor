@@ -1,10 +1,12 @@
 function playGame() {
+  // Keep track of scores
   let computerScore = 0,
     humanScore = 0,
     draw = 0,
     rounds = 5;
 
   function playRound(computerChoice, humanChoice) {
+    // Check winning position
     if (
       (humanChoice == "rock" && computerChoice == "scissor") ||
       (humanChoice == "scissor" && computerChoice == "paper") ||
@@ -25,6 +27,7 @@ function playGame() {
     }
   }
 
+  // Keep the game going until rounds is not equal to or less than 0
   while (rounds > 0) {
     rounds--;
     playRound(computer(), human());
@@ -35,15 +38,17 @@ function playGame() {
 }
 playGame();
 
+// Computer should select a random option as its guess
 function computer() {
   const options = ["rock", "paper", "scissor"];
   const randomIndex = Math.round(Math.random() * options.length);
-
   return options[randomIndex];
 }
 
 function human() {
+  // Use DO...While loop to check each user input before guessing it
   let option;
+
   do {
     option = prompt("Enter your choice: rock, paper, or scissor");
   } while (!["rock", "paper", "scissor"].includes(option));
