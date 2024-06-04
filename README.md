@@ -8,3 +8,10 @@ Foundational course from Odin Project
 - Array indexing
 - Functional Programming
 - Closure
+
+> Check the console for the
+
+- Winner
+  - Human
+  - Computer
+- Draw
