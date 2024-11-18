@@ -37,9 +37,11 @@ button {
     text-align: center;
     padding-inline: 40px;
     padding-block: 15px;
-    background: orangered;
+    background: white;
+    font-weight: bolder;
     cursor: pointer;
     border: none;
+    color: black;
 }
 
 .scores,
@@ -109,6 +111,6 @@ button {
 }
 
 .chance1 {
-    background-color: red;
+    background-color: black;
     color: white;
 }

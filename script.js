@@ -65,7 +65,7 @@ function playGame() {
         if (computerScore > humanScore) {
           WINNER_STATUS.innerHTML = "Oops computer won";
           WINNER_STATUS.style = `
-          background : orange;
+          background : orangered;
           font-size: 2em;
           `;
         } else if (humanScore > computerScore) {
@@ -93,7 +93,8 @@ playGame();
 function ChancesMAnipulation(chance) {
   CHANCES.forEach((element) => {
     if (chance == parseInt(element.innerHTML)) {
-      element.style.background = "red";
+      element.style = `background:black;
+      color: white;`;
     }
   });
 }
