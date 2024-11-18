@@ -1,9 +1,28 @@
+const humanChoice = document.querySelectorAll(".choice");
+const HUMAN_SCORE = document.getElementById("humanScore");
+const COMPUTER_SCORE = document.getElementById("computerScore");
+const WINNER_STATUS = document.getElementById("divider");
+const CHANCES = document.querySelectorAll(".chance");
+
 function playGame() {
   // Keep track of scores
   let computerScore = 0,
     humanScore = 0,
     draw = 0,
-    rounds = 5;
+    rounds = 1;
+
+  // Computer should select a random option as its guess
+  function computer() {
+    const options = ["rock", "paper", "scissor"];
+    const randomIndex = Math.round(Math.random() * options.length);
+    if (randomIndex >= 0 && randomIndex <= 2) {
+      console.log(randomIndex);
+
+      return options[randomIndex];
+    } else {
+      return options[2];
+    }
+  }
 
   function playRound(computerChoice, humanChoice) {
     // Check winning position
@@ -13,6 +32,7 @@ function playGame() {
       (humanChoice == "paper" && computerChoice == "rock")
     ) {
       humanScore++;
+      HUMAN_SCORE.innerHTML = humanScore;
       console.log(`${humanChoice} beats ${computerChoice}`);
     } else if (
       (computerChoice == "rock" && humanChoice == "scissor") ||
@@ -20,6 +40,7 @@ function playGame() {
       (computerChoice == "paper" && humanChoice == "rock")
     ) {
       computerScore++;
+      COMPUTER_SCORE.innerHTML = computerScore;
       console.log(`${computerChoice} beats ${humanChoice}`);
     } else {
       draw++;
@@ -27,52 +48,52 @@ function playGame() {
     }
   }
 
-  // Keep the game going until rounds is not equal to or less than 0
-  while (rounds > 0) {
-    rounds--;
-    playRound(computer(), human());
-  }
+  humanChoice.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      if (
+        ["rock", "paper", "scissor"].includes(
+          e.target.innerHTML.toLowerCase()
+        ) &&
+        rounds <= 5
+      ) {
+        playRound(computer(), e.target.innerHTML.toLowerCase());
+        ChancesMAnipulation(rounds);
+      }
+
+      if (rounds === 5) {
+        console.log(rounds);
+        if (computerScore > humanScore) {
+          WINNER_STATUS.innerHTML = "Oops computer won";
+          WINNER_STATUS.style = `
+          background : orange;
+          font-size: 2em;
+          `;
+        } else if (humanScore > computerScore) {
+          WINNER_STATUS.innerHTML = `Congratulation 🎉🥳\n\nYou won!`;
+          WINNER_STATUS.style = `
+          background : green;
+          font-size: 1em;
+          `;
+        } else if (humanScore === computerScore) {
+          WINNER_STATUS.innerHTML = "GAME DRAW!";
+        }
+      }
+      rounds++;
+    });
+  });
 
   const result = {
     Computer: computerScore,
     Human: humanScore,
     Draw: draw,
   };
-
-  if (computerScore > humanScore) {
-    console.log(`You lose!`);
-
-    console.table(result);
-  } else if (humanScore > computerScore) {
-    console.log(`You won!`);
-    console.table(result);
-  } else if (humanScore === computerScore) {
-    console.log(`Draw game!`);
-    console.table(result);
-  }
 }
 playGame();
 
-// Computer should select a random option as its guess
-function computer() {
-  const options = ["rock", "paper", "scissor"];
-  const randomIndex = Math.round(Math.random() * options.length);
-  if (randomIndex >= 0 && randomIndex <= 2) {
-    console.log(randomIndex);
-
-    return options[randomIndex];
-  } else {
-    return options[2];
-  }
-}
-
-function human() {
-  // Use DO...While loop to check each user input before guessing it
-  let option;
-
-  do {
-    option = prompt("Enter your choice: rock, paper, or scissor");
-  } while (!["rock", "paper", "scissor"].includes(option));
-
-  return option.toLowerCase();
+function ChancesMAnipulation(chance) {
+  CHANCES.forEach((element) => {
+    if (chance == parseInt(element.innerHTML)) {
+      element.style.background = "red";
+    }
+  });
 }

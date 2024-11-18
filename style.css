@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'Digital7';
+    src: url('fonts/digital-7.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    background-image: url("./bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 20px;
+    max-height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding-inline: 30px;
+    padding-top: 150px;
+}
+
+.board {
+    display: grid;
+    /* grid-template-rows: 1fr 1fr 1fr; */
+    row-gap: 1em;
+}
+
+button {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    padding-inline: 40px;
+    padding-block: 15px;
+    background: orangered;
+    cursor: pointer;
+    border: none;
+}
+
+.scores,
+.playGround {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+#humanScore,
+#computerScore {
+    font-family: 'Digital7', sans-serif;
+    font-size: xx-large;
+}
+
+.computerScore,
+.humanScore {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    background-color: black;
+    align-items: center;
+    color: wheat;
+    padding: 35px;
+    gap: 2em;
+}
+
+.playGround>div {
+    margin-top: 1em;
+    background-color: wheat;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    color: black;
+    font: bolder;
+}
+
+.divider {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    font-size: xx-large;
+}
+
+.chancesCount {
+    display: grid;
+    gap: 1em;
+}
+
+.chancesText {
+    font-size: x-large;
+    margin-bottom: .5em;
+}
+
+.chance {
+    background-color: aliceblue;
+    width: 50px;
+    padding: 10px;
+    color: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.chance1 {
+    background-color: red;
+    color: white;
+}

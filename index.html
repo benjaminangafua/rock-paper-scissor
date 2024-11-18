@@ -5,10 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
+    <div class="container">
+        <div class="chances">
+            <div class="chancesText">Rounds</div>
+            <div class="chancesCount">
+                <div class="chance chance1">1</div>
+                <div class="chance chance2">2</div>
+                <div class="chance chance3">3</div>
+                <div class="chance chance4">4</div>
+                <div class="chance chance5">5</div>
+            </div>
+        </div>
+        <div class="board">
+            <div class="scores">
+                <div class="humanScore">
+                    <div id="humanScore">0</div>
+                    <div>Human Score</div>
+                </div>
+                <div class="divider" id="divider">vs</div>
+                <div class="computerScore">
+                    <div id="computerScore">0</div>
+                    <div>Computer Score</div>
+                </div>
+            </div>
+            <div class="playGround">
+                <div class="rock choice">Rock</div>
+                <div class="paper choice">Paper</div>
+                <div class="scissor choice">Scissor</div>
+            </div>
+            <button type="reset" onclick="window.location.reload()">Restart</button>
+
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 
